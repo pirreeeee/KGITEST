@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>L.I.F.E. Pulse Streak Shield</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">L.I.F.E. Pulse</p>
+        <h1>Streak Shield Leaderboard</h1>
+      </div>
+      <label class="agent-picker">
+        Active agent
+        <select id="agentSelect"></select>
+      </label>
+    </header>
+
+    <main class="layout">
+      <section class="streak-panel" aria-labelledby="streakTitle">
+        <div>
+          <p class="eyebrow">Daily habit</p>
+          <h2 id="streakTitle">Keep the streak alive</h2>
+        </div>
+        <div class="streak-strip" id="streakStrip" aria-label="Consecutive study days"></div>
+        <div class="streak-stats">
+          <div>
+            <span class="metric" id="currentStreak">0</span>
+            <span>current days</span>
+          </div>
+          <div>
+            <span class="metric" id="longestStreak">0</span>
+            <span>longest streak</span>
+          </div>
+          <div>
+            <span class="metric" id="shieldCount">0</span>
+            <span>active shields</span>
+          </div>
+          <div>
+            <span class="metric" id="lifetimePoints">0</span>
+            <span>lifetime points</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="action-panel" aria-labelledby="actionTitle">
+        <div>
+          <p class="eyebrow">7-minute sprint</p>
+          <h2 id="actionTitle">Log today&apos;s recall</h2>
+        </div>
+        <form id="studyForm" class="study-form">
+          <label>
+            Module
+            <select id="moduleId">
+              <option value="regulatory-recall">Regulatory Recall</option>
+              <option value="term-life-refresh">Term Life Refresh</option>
+              <option value="investment-linked-rules">Investment-linked Rules</option>
+            </select>
+          </label>
+          <label>
+            Quiz score
+            <select id="quizScore">
+              <option value="100">100%</option>
+              <option value="85">85%</option>
+              <option value="70">70%</option>
+            </select>
+          </label>
+          <label class="check-row">
+            <input id="bioRhythm" type="checkbox" checked />
+            Bio-Rhythm respected
+          </label>
+          <button type="submit">Complete sprint</button>
+        </form>
+        <button id="runDailyCheck" class="secondary-button" type="button">
+          Run daily streak check
+        </button>
+        <p id="statusLine" class="status-line" role="status"></p>
+      </section>
+
+      <section class="board-panel" aria-labelledby="boardTitle">
+        <div class="tabs" role="tablist" aria-label="Leaderboard views">
+          <button class="tab-button active" type="button" data-tab="relative">Relative</button>
+          <button class="tab-button" type="button" data-tab="branches">Branches</button>
+          <button class="tab-button" type="button" data-tab="ledger">Ledger</button>
+        </div>
+
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow" id="epochLabel">Weekly epoch</p>
+            <h2 id="boardTitle">Two ahead, two behind</h2>
+          </div>
+          <button id="rebuildCache" class="secondary-button" type="button">Rebuild cache</button>
+        </div>
+
+        <div id="relativeTab" class="tab-pane active">
+          <div class="leaderboard-list" id="leaderboardList"></div>
+        </div>
+
+        <div id="branchesTab" class="tab-pane">
+          <div class="branch-grid" id="branchGrid"></div>
+        </div>
+
+        <div id="ledgerTab" class="tab-pane">
+          <div class="ledger-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Event</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody id="ledgerRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
