@@ -46,6 +46,32 @@ On Windows with `uv` available:
 .\run_tests.cmd
 ```
 
+## Demo Helpers
+
+Prepare a shield-consumed daily streak scenario for `A003`:
+
+```powershell
+python scripts\prepare_daily_streak_demo.py
+```
+
+Or with `uv`:
+
+```powershell
+uv run --python 3.12 python scripts\prepare_daily_streak_demo.py
+```
+
+Insert a new `PointLedger` event for `A003` before clicking `Rebuild cache`:
+
+```powershell
+python scripts\insert_rebuild_cache_demo.py
+```
+
+Or with `uv`:
+
+```powershell
+uv run --python 3.12 python scripts\insert_rebuild_cache_demo.py
+```
+
 ## Point Rules
 
 The backend posts one ledger transaction per point event.
